@@ -3,9 +3,9 @@ import xml.etree.ElementTree as ET
 
 # User-defined variables
 server_url = 'https://us-west-2a.online.tableau.com/'
-site_name = 'johndogfood'
-PAT_name = 'cloudrunner'
-PAT_value = '8NWdr5EPS9uWOJ0GGcOEFQ==:aAS0bNrkVY5VGjgNP7KbUVN63rcJLGE7'
+site_name = 'site-name'
+PAT_name = 'name'
+PAT_value = '8NWdr5EPS9uWOJ0GGsdfVN63rcJLGE7'
 api_version = "3.4"
 
 # Step 1: Generate signin.xml file
