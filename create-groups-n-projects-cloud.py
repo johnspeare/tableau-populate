@@ -3,23 +3,15 @@ import subprocess
 import csv
 import xml.etree.ElementTree as ET
 
-#cloud-PAT
-#server_url = 'https://us-west-2a.online.tableau.com/'
-#site_name = johndogfood
-#name: cloudrunner
-#key: mVqxFjuKQgKea6IEQ7kS9Q==:B1DNQ5DRfPRCPQo3vSV6ttvoTzXBeWU7
 
-#server-PAT
-#name: scriptrunner
-#key: djL7AwHJTGC87JNo740LoQ==:oloG8SJdzG3CbMUQdczVD44bDsqly7x1
-#server_url = 'https://edg3.cyclingspokane.com'
+
 
 # User-defined variables
 num_groups = 2
 server_url = 'https://us-west-2a.online.tableau.com/'
-site_name = 'johndogfood'
-PAT_name = 'cloudrunner'
-PAT_value = '8NWdr5EPS9uWOJ0GGcOEFQ==:aAS0bNrkVY5VGjgNP7KbUVN63rcJLGE7'
+site_name = 'name_here'
+PAT_name = 'name_here'
+PAT_value = 'djL7AwHJTGC87JNo740LoQ==:asdfzxcv44bDsqly7x1'
 csv_file_path = 'users-cloud.csv'
 api_version = "3.4"
 num_projects = 4
