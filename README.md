@@ -1,8 +1,11 @@
-# tableau-populate
-Python scripts that creates groups, projects for populating Tableau Cloud or Server test infrastructure
-# Populating test installs of Tableau Server  and Tableau Cloud
+# tableau-populate -- Populating test installs of Tableau Server  and Tableau Cloud
+Python scripts that creates groups, projects for populating Tableau Cloud or Server test infrastructure.
 
-This doc is a companion to the python scripts stored here. The scripts are used to populate Tableau Server with users, groups, and projects. The intent is to populate (and wipe) Tableau Server/Cloud quickly for the purposes of testing different migration scenarios.
+The python scripts here were generated with ChatGPT 3.5.
+
+This README is a companion to the python scripts stored in this repo. 
+
+The scripts are used to populate Tableau Server with users, groups, and projects. The intent is to populate (and wipe) Tableau Server/Cloud quickly for the purposes of testing different migration scenarios.
 
 This document and scripts have been written for Tableau Server on Linux and Tableau Cloud from a remote script running from a Mac terminal. 
 
