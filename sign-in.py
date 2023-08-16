@@ -2,9 +2,9 @@ import subprocess
 import xml.etree.ElementTree as ET
 
 # User-defined variables
-server_url = "https://edg3.cyclingspokane.com"
-PAT_name = "scriptrunner"
-PAT_value = "djL7AwHJTGC87JNo740LoQ==:oloG8SJdzG3CbMUQdczVD44bDsqly7x1"
+server_url = "https://TABLEAU.server.here"
+PAT_name = "NAME"
+PAT_value = "djL7AwHJTGC87JasDFMUQdczVD44bDsqly7x1"
 api_version = "3.4"
 
 # Step 1: Generate signin.xml file
