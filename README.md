@@ -74,10 +74,11 @@ To run a script:
 
 Script name: sign-in.py
 
-This script uses REST to sign in to your server. If it’s successful, then it will offer to delete the groups and projects on the site. 
+This script uses REST to sign in to your server. If it’s successful, then it will offer to delete the previous test groups and projects on the site. 
 
 It will only delete the groups and projects that are created by the other scripts (deletes groups/projects with naming convention: Group1, Group2, etc and Project1, Project2, etc)
 
+Delete action will not remove users. Quickest-easiest way to delete users is through the Tableau admin UI, select all users, "Remove from site."
 
 ### Script configuration
 
