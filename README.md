@@ -71,7 +71,7 @@ To run a script:
 * If you are running the scripts on Tableau Server, you will need to run as administrator/sudo:
     `sudo python3 script-name.py`
 
-## Step 1: Run Script #1 — REST Sign-in (and optional delete) 
+## Step 1: Run Script 1 — REST Sign-in (and optional delete) 
 
 Script name: sign-in.py
 
@@ -119,7 +119,7 @@ CSV files with 50 user accounts: users.csv.
 Follow the directions in public docs for adding users via CSV. ([Server](https://help.tableau.com/v0.0/server/en-us/users_import.htm) | [Cloud](https://help.tableau.com/v0.0/online/en-us/users_import.htm)).
 
 
-## Step 3: Run script #2 — Create groups and projects
+## Step 3: Run script 2 — Create groups and projects
 
 Script name: create-groups-n-projects.py
 
@@ -135,7 +135,13 @@ User-defined variables must be filled in before you run the script. Same configu
 
 Also includes the number of Groups and Projects that you want to create. The script will create these with names, GroupN and ProjectN, where N is an integer starting with 1 and incrementing to the number of Groups and Projects that you specified.
 
+## Step 4: Run script 3 -- Update project permissions
 
+Script name: perms.py
 
+This script removes "All Users" Write-Allow perms from the projects creeated by script 2. It then adds Write-Allow for each Group in a 1:1 mapping to projects. So Group1 has Write-Allow for Project 1, etc. If there are more groups than projects, then script will assign groups to projects round-robin until groups are used up. If there are more projects than groups, then groups will have access to multiple projects. 
 
+### Script configuration
+
+User-defined variables must be filled in before you run the script. Same configuration as sign-in.py.
         
