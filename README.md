@@ -1,5 +1,5 @@
 # tableau-populate -- Populating test installs of Tableau Server  and Tableau Cloud
-Python scripts that creates groups, projects for populating Tableau Cloud or Server test infrastructure.
+Python scripts that create groups, projects for populating Tableau Cloud or Server test infrastructure.
 
 The python scripts here were generated with ChatGPT 3.5.
 
