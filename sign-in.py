@@ -2,11 +2,13 @@ import subprocess
 import xml.etree.ElementTree as ET
 
 # User-defined variables
-server_url = 'https://us-west-2a.online.tableau.com/'
-site_name = 'site-name'
-PAT_name = 'name'
-PAT_value = '8NWdr5EPS9uWOJ0GGsdfVN63rcJLGE7'
+server_url = 'https://us-west-2a.online.tableau.com/' # 'https://example.example.com'
+site_name = '' #For default Tableau Server site, leave this as empty set.
+PAT_name = 'name_here'
+PAT_value = 'djL7AwHJTGC87JNo74--blah-blah-0LoQ==:asdfzxcv44bDsqly7x1'
 api_version = "3.4"
+
+####End of user defined variables. Do not make changes below this line.####
 
 # Step 1: Generate signin.xml file
 signin_xml = f'''<tsRequest>
