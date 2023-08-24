@@ -100,14 +100,13 @@ Variable notes
     * Tableau Server example url: “[https://tableau.example.com”](https://tableau.example.xn--com-9o0a/)
     * Tableau Cloud is the first part of the URL before the `/#/`. Example url: “[https://us-west-2a.online.tableau.com](https://us-west-2a.online.tableau.com/#/site/johndogfood/home)“
 * **site_name**: 
-    The site name is embedded in your Tableau Cloud URL after you log in:
-    [https://us-west-2a.online.tableau.com/#/site/johndogfood/home
-    
-    F](https://us-west-2a.online.tableau.com/#/site/johndogfood/home)or server, the script runs against the Default site. If you are running against the Default site, do leave clear the quotes and use an empty set.
+  * Tableau Server: the script runs against the `Default` site. If you are running against the Default site, and use an empty set, for example: `site_name: ' '`.
+  * Tableau Cloud: the site name is embedded in your Tableau Cloud URL after you log in:
+    https://us-west-2a.online.tableau.com/#/site/`your-site-name`/home.
 
 
 * **PAT_name and PAT_value:** these are the variables that you generated when you created your PAT. 
-* **api_version**: This is likely 3.4 unless you’re running an older version of Tableau Server. Tableau Cloud is 3.4.
+* **api_version**: This is likely 3.4 unless you’re running an older version of Tableau Server. As of August 2023, Tableau Cloud is 3.4.
 
 ## Step 2: Add users to Tableau Server/Tableau Cloud
 
