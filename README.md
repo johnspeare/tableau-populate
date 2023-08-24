@@ -73,11 +73,7 @@ To run a script:
 
 ## Step 1: Run Script #1 — REST Sign-in (and optional delete) 
 
-Scripts:
-
-* Server, In-place: sign-in.py
-* Server, on internet: sign-in.py
-* Cloud: sign-in-cloud.py
+Script name: sign-in.py
 
 This script uses REST to sign in to your server. If it’s successful, then it will offer to delete the groups and projects on the site. 
 
@@ -92,7 +88,7 @@ User-defined variables must be filled in before you run the script. They are in 
 ```
 # User-defined variables
 server_url = "https://tableau.example.com"
-site_name = "cloud-site-name" (do not use for server. see below)
+site_name = "site-name" #Important: if you are running the script against the default Tableau Server site (called "Default"), then leave this as an empty set.
 PAT_name = "exampleName"
 PAT_value = "djL7AwHHYFD76JNo740LoQ==:oloG8SJdzG3CbMUQdczVD44bDsqly7x1"
 api_version = "3.4"
@@ -104,24 +100,11 @@ Variable notes
 * **server_url:** This must be the base URL for the Tableau Server or Tableau Cloud deployment you are connecting to. 
     * Tableau Server example url: “[https://tableau.example.com”](https://tableau.example.xn--com-9o0a/)
     * Tableau Cloud is the first part of the URL before the `/#/`. Example url: “[https://us-west-2a.online.tableau.com](https://us-west-2a.online.tableau.com/#/site/johndogfood/home)“
-* **site_name**: This option is only viable in the Cloud version of the script. 
+* **site_name**: 
     The site name is embedded in your Tableau Cloud URL after you log in:
     [https://us-west-2a.online.tableau.com/#/site/johndogfood/home
     
-    F](https://us-west-2a.online.tableau.com/#/site/johndogfood/home)or server, the script runs against the Default site. If you are running against the Default site, do nothing.
-    
-     If you want to run the script against a different site on your server, update the sign-in.xml template in the script:
-
-```
-# Step 1: Generate signin.xml file
-signin_xml = f'''<tsRequest>
-  <credentials personalAccessTokenName="{PAT_name}"
-    personalAccessTokenSecret="{PAT_value}" >
-      <site contentUrl="site-name-goes-here" />
-  </credentials>
-</tsRequest>'''
-```
-
+    F](https://us-west-2a.online.tableau.com/#/site/johndogfood/home)or server, the script runs against the Default site. If you are running against the Default site, do leave clear the quotes and use an empty set.
 
 
 * **PAT_name and PAT_value:** these are the variables that you generated when you created your PAT. 
@@ -131,24 +114,28 @@ signin_xml = f'''<tsRequest>
 
 You can do this manually or add a bunch from a csv file. 
 
-CSV files with 50 user accounts: Users.csv is for Server and users-cloud.csv is for Cloud. 
+CSV files with 50 user accounts: users.csv. 
 
 Follow the directions in public docs for adding users via CSV. ([Server](https://help.tableau.com/v0.0/server/en-us/users_import.htm) | [Cloud](https://help.tableau.com/v0.0/online/en-us/users_import.htm)).
 
 
 ## Step 3: Run script #2 — Create groups and projects
 
-Scripts:
-
-* Server, In-place: create-groups-n-projects.py
-* Server, on internet: create-groups-n-projects.py
-* Cloud: create-groups-n-projects-cloud.py
+Script name: create-groups-n-projects.py
 
 In a nutshell, this script creates groups and projects on your Tableau site. 
 
-Specifically, it uses tabcmd to create groups which it then populates with users. Users only belong to one group. They are randomly distributed across the groups. You can specify how many groups you want to create. The script requiires a csv file of user accounts. If you used a csv file to bulk import users in Step 1, then use that same csv for this script.
+Specifically, it uses tabcmd to create groups which it then populates with users. Users only belong to one group. They are randomly distributed across the groups. You can specify how many groups you want to create. The script requires a csv file of user accounts. If you used a csv file to bulk import users in Step 1, then use that same csv for this script.
 
 Projects: the script uses REST to create the number of projects that you specify.
+
+### Script configuration
+
+User-defined variables must be filled in before you run the script. Same configuration as sign-in.py.
+
+Also includes the number of Groups and Projects that you want to create. The script will create these with names, GroupN and ProjectN, where N is an integer starting with 1 and incrementing to the number of Groups and Projects that you specified.
+
+
 
 
         
