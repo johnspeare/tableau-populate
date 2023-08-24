@@ -7,14 +7,17 @@ import xml.etree.ElementTree as ET
 
 
 # User-defined variables
-num_groups = 2
-server_url = 'https://us-west-2a.online.tableau.com/'
-site_name = 'name_here'
+
+server_url = 'https://us-west-2a.online.tableau.com/' # 'https://example.example.com'
+site_name = '' #For default Tableau Server site, leave this as empty set.
 PAT_name = 'name_here'
 PAT_value = 'djL7AwHJTGC87JNo740LoQ==:asdfzxcv44bDsqly7x1'
-csv_file_path = 'users-cloud.csv'
+csv_file_path = 'users.csv'
 api_version = "3.4"
 num_projects = 4
+num_groups = 2
+
+####End of user-defined variables - Do not edit below this line ##
 
 # Define the group names
 groups = []
