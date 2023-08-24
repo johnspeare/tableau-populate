@@ -23,7 +23,7 @@ The scripts support the following deployments . In some cases, a given script ca
 
 Before you begin do these things: 
 
-- [ ] Create a personal access ID and token (PAT). The scripts use a PAT to authenticate for all deployment scenarios.  You must create the PAT for the platform you’ll be running the scripts against. Instructions: [Tableau Server](https://help.tableau.com/current/server-linux/en-us/security_personal_access_tokens.htm) | T[ableau Cloud](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm). 
+- [ ] Create a personal access ID and token (PAT). The scripts use a PAT to authenticate for all deployment scenarios.  You must create the PAT for the platform you’ll be running the scripts against. Instructions: [Tableau Server](https://help.tableau.com/current/server-linux/en-us/security_personal_access_tokens.htm) | [Tableau Cloud](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm). 
 - [ ] Update Python 
     
     Server: Upgrade Tableau Server to 3.7 or later. (Here’s [AWS Linux instructions](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-linux.html) — do the PIP part in those instructions too!).
@@ -46,9 +46,9 @@ Before you begin do these things:
     
     Dev machine: If you are running commands from a local computer against Server or Cloud, then you must install tabcmd 2.0 there also. Run the following pip command to install:
     
-    `pip install tabcmd
+    `pip install tabcmd`
     
-    `Verify tabcmd version:
+    Verify tabcmd version:
     
     `tabcmd -v`
 
@@ -65,9 +65,8 @@ To run a script:
 
 
 * Run the following command in the same directory where you have saved the script:
-    `python3 script-name.py
-    
-    `
+    `python3 script-name.py`
+ 
 * If you are running the scripts on Tableau Server, you will need to run as administrator/sudo:
     `sudo python3 script-name.py`
 
