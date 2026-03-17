@@ -1,0 +1,10 @@
+<tsRequest>
+              <permissions>
+                <granteeCapabilities>
+                  <group id="3e591b19-80af-409e-96fb-f2f587da7f09" />
+                  <capabilities>
+                    <capability name="Write" mode="Allow" />
+                  </capabilities>
+                </granteeCapabilities>
+              </permissions>
+            </tsRequest>
