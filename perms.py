@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 # User-defined variables
 server_url = 'https://us-west-2a.online.tableau.com/' #'https://example.yourdomain.org'
 site_name = '' #leave this as empty set if running against Default Tablau Server site
-PAT_name = "name"
-PAT_value = "A38FlZnrSc-blah-blah-blahKNEwXoZVbKHX2fDB0dPMmS"
+PAT_name = ''
+PAT_value = ''
 api_version = "3.4"
 
 # Step 1: Generate signin.xml file

@@ -3,7 +3,11 @@ Python scripts that create groups, projects for populating Tableau Cloud or Serv
 
 The python scripts here were generated with ChatGPT 3.5.
 
-This README is a companion to the python scripts stored in this repo. 
+This README is a companion to the python scripts stored in this repo.
+
+### Recent changes
+
+- **create-groups-n-projects.py:** Script now adds users from the CSV to the site via the REST API *before* creating groups and running `tabcmd addusers`. This fixes 404 "Item not found: [Users]" errors that occurred when users in the CSV did not yet exist on the site. Sign-in was moved to the start and is reused for both adding users and creating projects. 
 
 The scripts are used to populate Tableau Server with users, groups, and projects. The intent is to populate (and wipe) Tableau Server/Cloud quickly for the purposes of testing different migration scenarios.
 
@@ -109,30 +113,38 @@ Variable notes
 * **PAT_name and PAT_value:** these are the variables that you generated when you created your PAT. 
 * **api_version**: This is likely 3.4 unless you’re running an older version of Tableau Server. As of August 2023, Tableau Cloud is 3.4.
 
-## Step 2: Add users to Tableau Server/Tableau Cloud
+## Step 2: Add users to Tableau Server/Tableau Cloud (optional if using create-groups-n-projects.py)
 
 You can do this manually or add a bunch from a csv file. 
 
 CSV files with 50 user accounts: users.csv. 
 
-Follow the directions in public docs for adding users via CSV. ([Server](https://help.tableau.com/v0.0/server/en-us/users_import.htm) | [Cloud](https://help.tableau.com/v0.0/online/en-us/users_import.htm)).
+**If you run create-groups-n-projects.py (Step 3), that script now adds the users from `users.csv` to the site automatically via the REST API before creating groups.** So you can skip manual/CSV import in this step when using the script. If you prefer to add users yourself, follow the directions in public docs for adding users via CSV. ([Server](https://help.tableau.com/v0.0/server/en-us/users_import.htm) | [Cloud](https://help.tableau.com/v0.0/online/en-us/users_import.htm)).
 
 
 ## Step 3: Run script 2 — Create groups and projects
 
 Script name: create-groups-n-projects.py
 
-In a nutshell, this script creates groups and projects on your Tableau site. 
+In a nutshell, this script adds users to the site (from the CSV), creates groups, assigns users to groups, and creates projects. 
 
-Specifically, it uses tabcmd to create groups which it then populates with users. Users only belong to one group. They are randomly distributed across the groups. You can specify how many groups you want to create. The script requires a csv file of user accounts. If you used a csv file to bulk import users in Step 1, then use that same csv for this script.
+**What the script does (in order):**
 
-Projects: the script uses REST to create the number of projects that you specify.
+1. **Sign in** — Uses the REST API to sign in and obtain a session token.
+2. **Add users to the site** — For each row in `users.csv`, calls the REST API to add that user to the site (username and site role from columns 1 and 4). This step must run before adding users to groups; otherwise `tabcmd addusers` returns 404 "Item not found: [Users]" because those users do not yet exist on the site.
+3. **Tabcmd login** — Logs in with tabcmd for the group commands.
+4. **Create groups and add users** — Creates each group (Group1, Group2, …), randomly assigns users from the CSV to groups, and runs `tabcmd addusers` to add them. Users are in one group only.
+5. **Create projects** — Uses the REST API to create the specified number of projects (Project1, Project2, …).
+
+**CSV format:** The script expects `users.csv` with at least: column 1 = username (email), column 4 = site role (Creator, Explorer, Viewer, Unlicensed). Same file as in Step 2.
+
+**Note (Tableau Cloud):** If the REST "Add User" call returns 403/400 or invite-only behavior on your Cloud site, add or invite users via the Tableau Cloud UI or your normal process first, then run this script to create groups and assign those existing users.
 
 ### Script configuration
 
 User-defined variables must be filled in before you run the script. Same configuration as sign-in.py.
 
-Also includes the number of Groups and Projects that you want to create. The script will create these with names, GroupN and ProjectN, where N is an integer starting with 1 and incrementing to the number of Groups and Projects that you specified.
+Also includes: `csv_file_path` (e.g. `users.csv`), and the number of **Groups** and **Projects** to create. The script creates them with names GroupN and ProjectN, where N starts at 1.
 
 ## Step 4: Run script 3 -- Update project permissions
 

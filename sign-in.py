@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 # User-defined variables
 server_url = 'https://us-west-2a.online.tableau.com/' # 'https://example.example.com'
 site_name = '' #For default Tableau Server site, leave this as empty set.
-PAT_name = 'name_here'
-PAT_value = 'djL7AwHJTGC87JNo74--blah-blah-0LoQ==:asdfzxcv44bDsqly7x1'
+PAT_name = ''
+PAT_value = ''
 api_version = "3.4"
 
 ####End of user defined variables. Do not make changes below this line.####
